@@ -1,0 +1,53 @@
+I have successfully done it in my project so hope this answer helps you.
+
+Please follow below steps to implement paypal payment integration.
+
+**Paypal side configurations**
+
+1.Login to paypal business account.
+
+2.Click on setting icon in navbar(If you want to go with URL then https://www.sandbox.paypal.com/businessprofile/settings is the URL.
+
+3.You will get screen like below.
+[![enter image description here][1]][1]
+
+4.Click on my selling tools > Website preferences (screen attached below)
+
+[![enter image description here][2]][2]
+
+5.Enable Instant payment notifications by clicking on Instant payment notifications in above screen and you will get below screen(You will be asked to enter a URL on which you want paypal to redirect after successful or failure of payment. see below screen IPN is enabled.
+
+[![enter image description here][3]][3]
+
+Congratulations,you have made all the configurations required for the Paypal payment.
+
+Now lets come to JAVA part to handle success/failure from paypal.
+
+Create a method in controller to handle paypal redirection URL like below(you will get mulitple request parameters like "st","amt","cc","tx" status,amount,currency,transaction id etc.).
+
+    @RequestMapping(value="/paypal/success")  //this url should map which you configured in step 5
+    	public String success(ModelMap modelMap,HttpServletRequest httpServletRequest,Model uiModel) throws Exception{
+    		Enumeration<String> parameterNames = httpServletRequest.getParameterNames();
+    
+    		while (parameterNames.hasMoreElements()) {
+    
+    			String paramName = parameterNames.nextElement();
+    			System.out.println("paramName : "+paramName);
+    			String[] paramValues = httpServletRequest.getParameterValues(paramName);
+    
+    			for (int i = 0; i < paramValues.length; i++) {
+    				String paramValue = paramValues[i];
+    				System.out.println("paramName : " + paramName+ ",paramValue : " + paramValue);
+                    //your logic goes here
+    				
+    			}
+    		}
+    
+    	}
+
+
+
+
+  [1]: https://i.stack.imgur.com/aRCjZ.png
+  [2]: https://i.stack.imgur.com/vZfFt.png
+  [3]: https://i.stack.imgur.com/M8QWv.png
