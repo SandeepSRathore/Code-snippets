@@ -1,0 +1,1 @@
+sudo netstat -anp | grep 9000
