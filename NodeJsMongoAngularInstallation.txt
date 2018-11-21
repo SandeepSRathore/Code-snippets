@@ -1,0 +1,44 @@
+A.Install nodejs
+
+1.wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-                                                                                        x64.tar.gz
+
+2.sudo tar -xf node-v8.9.4-linux-x64.tar.gz --directory /usr/local --strip-components 1
+
+This will put the ./bin directory in /usr/local/bin, which should be in your $PATH already. You can verify that it worked with:
+
+node --version
+npm --version
+
+B.MongoDB
+
+How to Install and Configure MongoDB on Ubuntu 16.04
+
+Step 1 - Importing the Public Key
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+
+Step 2 - Create source list file MongoDB
+echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+
+Step 3 - Update the repository
+sudo apt-get update
+
+Step 4 - Install MongoDB
+sudo apt-get install -y mongodb-org
+
+Step 5 - Start MongoDB
+sudo service mongod start
+sudo service mongod status
+
+Step 6 -enter the etc folder
+ cd  /etc
+Step 7 – Make Changes in mongod.conf file
+nano mongod.conf
+comment the BindIP & save it.
+
+Step 8 - Restart MongoDB
+sudo service mongod restart
+sudo service mongod status
+
+C.Angular
+
+npm install -g @angular/cli@1.7.3
