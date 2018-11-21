@@ -1,0 +1,9 @@
+git clone <URL>
+go to folder --
+git fetch origin dev<sub-branch-name>
+git checkout dev
+
+git clone http://127.0.0.1:1010/root/app.git
+cd app/
+git fetch origin dev
+git checkout dev
